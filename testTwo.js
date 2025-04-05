@@ -5,7 +5,7 @@ document.querySelectorAll(".testOneAnswers-container img").forEach(img => {
         const feedbackToQuestionText = document.getElementById("feedbackToQuestionText");
 
                //------
-               const questionIndex = 2;  // This is for Question 1
+               const questionIndex = 2;  
                //------
     
         if (this.getAttribute("data-correct") === "true") {
@@ -32,6 +32,11 @@ document.querySelectorAll(".testOneAnswers-container img").forEach(img => {
                  -------
                 </div></div>
             `;
+            feedbackToQuestionText.style.color = "#dc3545"; // red for incorrect
+
+            // Store result in localStorage for incorrect answer (Lut Desert)
+            localStorage.setItem(`q${questionIndex}_result`, 'incorrect');
+             //------
         } else {
             feedbackToQuestionText.innerHTML = `
               <div class = "feedback-container-for-text">

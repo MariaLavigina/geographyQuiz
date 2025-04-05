@@ -3,10 +3,8 @@ document.querySelectorAll(".testOneAnswers-container img").forEach(img => {
     img.addEventListener("click", function () {
         const feedbackToQuestionText = document.getElementById("feedbackToQuestionText");
 
-       //------
-       const questionIndex = 4;  // This is for Question 4
-       //------
-
+       const questionIndex = 4;  
+   
         if (this.getAttribute("data-correct") === "true") {
 
             feedbackToQuestionText.innerHTML = `
@@ -19,10 +17,8 @@ document.querySelectorAll(".testOneAnswers-container img").forEach(img => {
             `;
             feedbackToQuestionText.style.color = "#28a745"; 
 
-                     // Store result in localStorage for correct answer
+                
                      localStorage.setItem(`q${questionIndex}_result`, 'correct');
-                     //----------
-
 
         } 
         else if (this.getAttribute("alt") === "Sao Paulo") {
@@ -35,12 +31,9 @@ document.querySelectorAll(".testOneAnswers-container img").forEach(img => {
                 </div>
             `;
 
-            
-            feedbackToQuestionText.style.color = "#dc3545"; // red for incorrect
+            feedbackToQuestionText.style.color = "#dc3545"; 
 
-            // Store result in localStorage for incorrect answer (Lut Desert)
             localStorage.setItem(`q${questionIndex}_result`, 'incorrect');
-             //------
 
         } else if (this.getAttribute("alt") === "New Delhi") {
             feedbackToQuestionText.innerHTML = `
@@ -51,11 +44,11 @@ document.querySelectorAll(".testOneAnswers-container img").forEach(img => {
                     </div>
                 </div>
             `;
-            feedbackToQuestionText.style.color = "#dc3545"; // red for incorrect
+            feedbackToQuestionText.style.color = "#dc3545"; 
             
-            // Store result in localStorage for incorrect answer (Turpan Depression)
+
             localStorage.setItem(`q${questionIndex}_result`, 'incorrect');
-            //------
+       
         }
 
         const nextQuestionButton = document.getElementById("NextQuestionButtonQuiz");
