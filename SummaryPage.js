@@ -1,34 +1,33 @@
 document.addEventListener("DOMContentLoaded", function () {
-    // Retrieve the quiz answers from localStorage
-    const quizAnswers = JSON.parse(localStorage.getItem("quizAnswers")) || [];
+    const playerQuizTotalQuestions = 5;
+    let correct = 0;
+    let incorrect = 0;
 
-    // Initialize counters for correct and incorrect answers
-    let correctAnswers = 0;
-    let incorrectAnswers = 0;
-
-    // Count correct and incorrect answers
-    quizAnswers.forEach(answer => {
-        if (answer === true) {
-            correctAnswers++;
-        } else {
-            incorrectAnswers++;
+    // Loop through each question and retrieve the result from localStorage
+    for (let i = 1; i <= playerQuizTotalQuestions; i++) {
+        const playerSingleQuizResult = localStorage.getItem(`q${i}_result`);
+        if (playerSingleQuizResult === 'correct') {
+            correct++;
+        } else if (playerSingleQuizResult === 'incorrect') {
+            incorrect++;
         }
-    });
+    }
 
-    // Display the result
-    const summaryContent = document.getElementById("summary-content");
-    summaryContent.innerHTML = `
-        <p>You answered ${correctAnswers} questions correctly!</p>
-        <p>You answered ${incorrectAnswers} questions incorrectly.</p>
+    // Display the result summary
+    const playerQuizSummaryScore = document.getElementById("player-summary-score");
+    playerQuizSummaryScore.innerHTML = `
+        <p>You answered ${correct} questions correctly!</p>
+        <p>You answered ${incorrect} questions incorrectly.</p>
     `;
 
-    // Display the "Restart Quiz" button
+    // Add restart button functionality    restartQuizButton
     const restartQuizButton = document.getElementById("restartQuizButton");
-    restartQuizButton.style.display = "block";
-
-    // Restart the quiz when the button is clicked
-    restartQuizButton.addEventListener("click", function () {
-        localStorage.removeItem("quizAnswers");  // Clear the previous answers
-        window.location.href = "TestOne.html";    // Redirect to the first question page
-    });
+    if (restartQuizButton) {
+        restartQuizButton.addEventListener("click", function () {
+            // Clear localStorage to reset the quiz
+            localStorage.clear();
+            // Redirect to the first question page
+            window.location.href = "TestOne.html";
+        });
+    }
 });
