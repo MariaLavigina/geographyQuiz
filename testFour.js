@@ -3,13 +3,13 @@ document.querySelectorAll(".testOneAnswers-container img").forEach(img => {
     img.addEventListener("click", function () {
         const feedbackToQuestionText = document.getElementById("feedbackToQuestionText");
 
-       const questionIndex = 4;  
+       const indexForQuestionLS = 4;  
    
-        if (this.getAttribute("data-correct") === "true") {
+        if (this.getAttribute("correct-data-answer") === "true") {
 
             feedbackToQuestionText.innerHTML = `
                 <div class = "feedback-container-for-text">
-                    <div class = "correct-answer-quiz">Well done! You nailed it!</div>
+                    <div class = "correct-answer-quiz">well done! you nailed it!</div>
                     <div class="feedback-text">
                   ----------
                     </div>
@@ -18,13 +18,13 @@ document.querySelectorAll(".testOneAnswers-container img").forEach(img => {
             feedbackToQuestionText.style.color = "#28a745"; 
 
                 
-                     localStorage.setItem(`q${questionIndex}_result`, 'correct');
+                     localStorage.setItem(`question-counter-local-storage${indexForQuestionLS}_result`, 'correct');
 
         } 
         else if (this.getAttribute("alt") === "Sao Paulo") {
             feedbackToQuestionText.innerHTML = `
                 <div class = "feedback-container-for-text">
-                    <div class = "incorrect-answer-quiz">Oops, nice try, but Sao Paulo isn’t the right answer!</div>
+                    <div class = "incorrect-answer-quiz">Sao Paulo isn’t the right answer!</div>
                     <div class="feedback-text">
                         --------
                     </div>
@@ -33,12 +33,12 @@ document.querySelectorAll(".testOneAnswers-container img").forEach(img => {
 
             feedbackToQuestionText.style.color = "#dc3545"; 
 
-            localStorage.setItem(`q${questionIndex}_result`, 'incorrect');
+            localStorage.setItem(`question-counter-local-storage${indexForQuestionLS}_result`, 'incorrect');
 
         } else if (this.getAttribute("alt") === "New Delhi") {
             feedbackToQuestionText.innerHTML = `
                 <div class = "feedback-container-for-text">
-                    <div class = "incorrect-answer-quiz">Oops, nice try, but New Delhi isn’t the right answer! </div>
+                    <div class = "incorrect-answer-quiz">New Delhi isn’t the right answer!</div>
                     <div class="feedback-text">
                        --------
                     </div>
@@ -47,7 +47,7 @@ document.querySelectorAll(".testOneAnswers-container img").forEach(img => {
             feedbackToQuestionText.style.color = "#dc3545"; 
             
 
-            localStorage.setItem(`q${questionIndex}_result`, 'incorrect');
+            localStorage.setItem(`question-counter-local-storage${indexForQuestionLS}_result`, 'incorrect');
        
         }
 
